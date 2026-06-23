@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>An Undergraduate Property Valuator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Property Valuation Project</h1>
+            <p>Enter the house details below to get an instant market valuation.</p>
+        </header>
+
+        <main>
+            <form id="valuation-form">
+                <div class="input-group">
+                    <label for="location">Property Location:</label>
+                    <input type="text" id="location" name="Location" required placeholder="Type neighborhood...">
+                </div>
+
+                <div class="row">
+                    <div class="input-group">
+                        <label for="beds">Bedrooms:</label>
+                        <input type="number" id="beds" name="Bedrooms" value="0" min="1" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="baths">Bathrooms:</label>
+                        <input type="number" id="baths" name="Bathrooms" value="0" min="1" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="toilets">Toilets:</label>
+                        <input type="number" id="toilets" name="Toilets" value="0" min="1" required>
+                    </div>
+                </div>
+
+                <div class="checkbox-group">
+                    <p class="amenities-title">Amenities:</p>
+                    <label><input type="checkbox" name="Has_Gym" value="1"> Has Gym</label>
+                    <label><input type="checkbox" name="Has_Pool" value="1"> Has Pool</label>
+                    <label><input type="checkbox" name="Has_BQ" value="1" checked> Has BQ</label>
+                    <label><input type="checkbox" name="Has_Elevator" value="1"> Has Elevator</label>
+                </div>
+
+                <button type="submit" id="submit-btn" class="submit-btn">Calculate Market Value</button>
+            </form>
+
+            <div id="result-box" class="hidden">
+                <div class="exact-prediction">
+                    <p>Predicted Price:</p>
+                    <h3 id="exact-price"></h3>
+                </div>
+                
+                <div class="range-prediction">
+                    <p>Market Range:</p>
+                    <h2 id="price-range"></h2>
+                    <small class="disclaimer">Range calculated using the model's MAE result.</small>
+                </div>
+            </div>
+
+            <div id="error-box" class="hidden"></div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
