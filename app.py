@@ -21,6 +21,16 @@ except Exception as e:
 def home():
     return render_template('index.html')
 
+# NEW ENDPOINT: Sends the valid location list to the frontend dropdown
+@app.route('/locations', methods=['GET'])
+def get_locations():
+    try:
+        # Pull the list from your encoder and sort it A to Z
+        sorted_locations = sorted(list(label_encoder.classes_))
+        return jsonify(sorted_locations)
+    except Exception as e:
+        return jsonify([])
+
 #THE KITCHEN (Processes the Math)
 @app.route('/predict', methods=['POST'])
 def predict():

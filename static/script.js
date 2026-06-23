@@ -1,3 +1,27 @@
+// Automatically load locations into the dropdown menu on page load
+document.addEventListener('DOMContentLoaded', async () => {
+    const locationDropdown = document.getElementById('location');
+    
+    try {
+        const response = await fetch('/locations');
+        const locations = await response.json();
+        
+        // Clear out the "Loading..." placeholder
+        locationDropdown.innerHTML = '<option value="" disabled selected>Select a neighborhood...</option>';
+        
+        // Populate the dropdown with your trained locations
+        locations.forEach(loc => {
+            const option = document.createElement('option');
+            option.value = loc;
+            option.textContent = loc;
+            locationDropdown.appendChild(option);
+        });
+    } catch (error) {
+        console.error("Error fetching locations:", error);
+        locationDropdown.innerHTML = '<option value="" disabled selected>❌ Error loading locations</option>';
+    }
+});
+
 document.getElementById('valuation-form').addEventListener('submit', async function(event) {
     // 1. Prevent the page from reloading
     event.preventDefault();

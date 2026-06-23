@@ -55,7 +55,7 @@ header p {
     margin: 0 auto;
 }
 
-/* Modern Input Styling */
+/* Modern Input & Dropdown Styling */
 .input-group {
     margin-bottom: 22px;
 }
@@ -69,15 +69,27 @@ label {
 }
 
 input[type="text"],
-input[type="number"] {
+input[type="number"],
+select {
     width: 100%;
     padding: 14px 16px;
     font-size: 1rem;
     border: 1.5px solid var(--border-subtle);
     border-radius: 8px;
-    background-color: transparent;
+    background-color: var(--card-bg); /* Forces solid background for option list */
+    color: var(--primary-depth);
     transition: all 0.2s ease;
-    box-sizing: border-box; /* Ensures padding doesn't affect width */
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+/* ADDED 'select:focus' HERE FOR THE HOVER HALO EFFECT */
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+    outline: none;
+    border-color: var(--tech-accent);
+    box-shadow: 0 0 0 4px rgba(0, 210, 211, 0.1);
 }
 
 /* Subtle focus state */

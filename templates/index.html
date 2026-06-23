@@ -17,7 +17,9 @@
             <form id="valuation-form">
                 <div class="input-group">
                     <label for="location">Property Location:</label>
-                    <input type="text" id="location" name="Location" required placeholder="Type neighborhood...">
+                    <select id="location" name="Location" required>
+                        <option value="" disabled selected>Loading neighborhoods...</option>
+                    </select>
                 </div>
 
                 <div class="row">
